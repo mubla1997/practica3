@@ -2,22 +2,23 @@ package com.liceu.practica3.models;
 
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long country_id;
+    private Long country_id;
 
     @Nullable
-    String country_iso_code;
+    private String country_iso_code;
 
     @Nullable
-    String country_name;
+    private String country_name;
+
+    @OneToMany(mappedBy = "country_id")
+    Set<Production_country> production_countries;
 
     public Long getCountry_id() {
         return country_id;
@@ -43,5 +44,13 @@ public class Country {
 
     public void setCountry_name(@Nullable String country_name) {
         this.country_name = country_name;
+    }
+
+    public Set <Production_country> getProduction_countries() {
+        return production_countries;
+    }
+
+    public void setProduction_countries(Set <Production_country> production_countries) {
+        this.production_countries = production_countries;
     }
 }

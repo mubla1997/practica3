@@ -2,22 +2,23 @@ package com.liceu.practica3.models;
 
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long language_id;
+    private Long language_id;
 
     @Nullable
-    String language_code;
+    private String language_code;
 
     @Nullable
-    String language_name;
+    private String language_name;
+
+    @OneToMany(mappedBy = "language_id")
+    Set<Movie_languages> movie_languages;
 
     public Long getLanguage_id() {
         return language_id;
@@ -43,5 +44,13 @@ public class Language {
 
     public void setLanguage_name(@Nullable String language_name) {
         this.language_name = language_name;
+    }
+
+    public Set <Movie_languages> getMovie_languages() {
+        return movie_languages;
+    }
+
+    public void setMovie_languages(Set <Movie_languages> movie_languages) {
+        this.movie_languages = movie_languages;
     }
 }

@@ -2,19 +2,20 @@ package com.liceu.practica3.models;
 
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long genre_id;
+    private Long genre_id;
 
     @Nullable
-    String genre_name;
+    private String genre_name;
+
+    @OneToMany(mappedBy = "genre_id")
+    Set<Movie_genre> movie_genres;
 
     public Long getGenre_id() {
         return genre_id;
@@ -31,5 +32,13 @@ public class Genre {
 
     public void setGenre_name(@Nullable String genre_name) {
         this.genre_name = genre_name;
+    }
+
+    public Set <Movie_genre> getMovie_genres() {
+        return movie_genres;
+    }
+
+    public void setMovie_genres(Set <Movie_genre> movie_genres) {
+        this.movie_genres = movie_genres;
     }
 }
