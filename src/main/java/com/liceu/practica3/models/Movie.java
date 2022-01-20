@@ -2,60 +2,79 @@ package com.liceu.practica3.models;
 
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int movie_id;
+    private Long movie_id;
 
     @Nullable
-    String tittle;
+    private String tittle;
 
     @Nullable
-    int budget;
+    private int budget;
 
     @Nullable
-    String homepage;
+    private String homepage;
 
     @Nullable
-    String overview;
+    private String overview;
 
     @Nullable
-    Double popularity;
+    private Double popularity;
 
     @Nullable
-    Date release_date;
+    private Date release_date;
 
     @Nullable
-    BigInteger revenue;
+    private BigInteger revenue;
 
     @Nullable
-    int runtime;
+    private int runtime;
 
     @Nullable
-    String movie_status;
+    private String movie_status;
 
     @Nullable
-    String tagline;
+    private String tagline;
 
     @Nullable
-    Double vote_average;
+    private Double vote_average;
 
     @Nullable
-    int vote_count;
+    private int vote_count;
 
-    public int getMovie_id() {
+    @OneToMany(mappedBy = "movie_id")
+    Set<Movie_crew> movie_crews;
+
+    @OneToMany(mappedBy = "movie_id")
+    Set<Movie_cast> movie_casts;
+
+    @OneToMany(mappedBy = "movie_id")
+    Set<Movie_company> movie_companies;
+
+    @OneToMany(mappedBy = "movie_id")
+    Set<Production_country> production_countries;
+
+    @OneToMany(mappedBy = "movie_id")
+    Set<Movie_languages> movie_languages;
+
+    @OneToMany(mappedBy = "movie_id")
+    Set<Movie_genre> movie_genres;
+
+    @OneToMany(mappedBy = "movie_id")
+    Set<Movie_keywords> movie_keywords;
+
+    public Long getMovie_id() {
         return movie_id;
     }
 
-    public void setMovie_id(int movie_id) {
+    public void setMovie_id(Long movie_id) {
         this.movie_id = movie_id;
     }
 
@@ -162,5 +181,61 @@ public class Movie {
 
     public void setVote_count(int vote_count) {
         this.vote_count = vote_count;
+    }
+
+    public Set <Movie_crew> getMovie_crews() {
+        return movie_crews;
+    }
+
+    public void setMovie_crews(Set <Movie_crew> movie_crews) {
+        this.movie_crews = movie_crews;
+    }
+
+    public Set <Movie_cast> getMovie_casts() {
+        return movie_casts;
+    }
+
+    public void setMovie_casts(Set <Movie_cast> movie_casts) {
+        this.movie_casts = movie_casts;
+    }
+
+    public Set <Movie_company> getMovie_companies() {
+        return movie_companies;
+    }
+
+    public void setMovie_companies(Set <Movie_company> movie_companies) {
+        this.movie_companies = movie_companies;
+    }
+
+    public Set <Production_country> getProduction_countries() {
+        return production_countries;
+    }
+
+    public void setProduction_countries(Set <Production_country> production_countries) {
+        this.production_countries = production_countries;
+    }
+
+    public Set <Movie_languages> getMovie_languages() {
+        return movie_languages;
+    }
+
+    public void setMovie_languages(Set <Movie_languages> movie_languages) {
+        this.movie_languages = movie_languages;
+    }
+
+    public Set <Movie_genre> getMovie_genres() {
+        return movie_genres;
+    }
+
+    public void setMovie_genres(Set <Movie_genre> movie_genres) {
+        this.movie_genres = movie_genres;
+    }
+
+    public Set <Movie_keywords> getMovie_keywords() {
+        return movie_keywords;
+    }
+
+    public void setMovie_keywords(Set <Movie_keywords> movie_keywords) {
+        this.movie_keywords = movie_keywords;
     }
 }

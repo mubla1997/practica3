@@ -11,16 +11,16 @@ import javax.persistence.Id;
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int genre_id;
+    Long genre_id;
 
     @Nullable
     String genre_name;
 
-    public int getGenre_id() {
+    public Long getGenre_id() {
         return genre_id;
     }
 
-    public void setGenre_id(int genre_id) {
+    public void setGenre_id(Long genre_id) {
         this.genre_id = genre_id;
     }
 

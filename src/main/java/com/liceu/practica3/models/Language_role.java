@@ -11,16 +11,16 @@ import javax.persistence.Id;
 public class Language_role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int role_id;
+    Long role_id;
 
     @Nullable
     String language_role;
 
-    public int getRole_id() {
+    public Long getRole_id() {
         return role_id;
     }
 
-    public void setRole_id(int role_id) {
+    public void setRole_id(Long role_id) {
         this.role_id = role_id;
     }
 

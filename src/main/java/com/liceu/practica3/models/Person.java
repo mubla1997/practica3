@@ -2,25 +2,29 @@ package com.liceu.practica3.models;
 
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int person_id;
+    private Long person_id;
 
     @Nullable
-    String person_name;
+    private String person_name;
 
-    public int getPerson_id() {
+    @OneToMany(mappedBy = "person_id")
+    Set <Movie_crew> movie_crews;
+
+    @OneToMany(mappedBy = "person_id")
+    Set<Movie_cast> movie_casts;
+
+    public Long getPerson_id() {
         return person_id;
     }
 
-    public void setPerson_id(int person_id) {
+    public void setPerson_id(Long person_id) {
         this.person_id = person_id;
     }
 
@@ -31,5 +35,21 @@ public class Person {
 
     public void setPerson_name(@Nullable String person_name) {
         this.person_name = person_name;
+    }
+
+    public Set <Movie_crew> getMovie_crews() {
+        return movie_crews;
+    }
+
+    public void setMovie_crews(Set <Movie_crew> movie_crews) {
+        this.movie_crews = movie_crews;
+    }
+
+    public Set <Movie_cast> getMovie_casts() {
+        return movie_casts;
+    }
+
+    public void setMovie_casts(Set <Movie_cast> movie_casts) {
+        this.movie_casts = movie_casts;
     }
 }

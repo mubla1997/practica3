@@ -11,16 +11,16 @@ import javax.persistence.Id;
 public class Keyword {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int keyword_id;
+    Long keyword_id;
 
     @Nullable
     String keyword_name;
 
-    public int getKeyword_id() {
+    public Long getKeyword_id() {
         return keyword_id;
     }
 
-    public void setKeyword_id(int keyword_id) {
+    public void setKeyword_id(Long keyword_id) {
         this.keyword_id = keyword_id;
     }
 

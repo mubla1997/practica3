@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int country_id;
+    Long country_id;
 
     @Nullable
     String country_iso_code;
@@ -19,11 +19,11 @@ public class Country {
     @Nullable
     String country_name;
 
-    public int getCountry_id() {
+    public Long getCountry_id() {
         return country_id;
     }
 
-    public void setCountry_id(int country_id) {
+    public void setCountry_id(Long country_id) {
         this.country_id = country_id;
     }
 

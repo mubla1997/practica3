@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int language_id;
+    Long language_id;
 
     @Nullable
     String language_code;
@@ -19,11 +19,11 @@ public class Language {
     @Nullable
     String language_name;
 
-    public int getLanguage_id() {
+    public Long getLanguage_id() {
         return language_id;
     }
 
-    public void setLanguage_id(int language_id) {
+    public void setLanguage_id(Long language_id) {
         this.language_id = language_id;
     }
 
