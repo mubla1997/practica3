@@ -7,12 +7,20 @@
 
 <form id="form" class="form" action="" method="get">
     <label for="person" class="text-info">ID Person:</label><br>
-    <input type="text" name="person_id" id="person" class="form-control" placeholder="ID from person">
+    <input type="number" name="person_id" id="person" class="form-control" placeholder="ID from person">
+
     <label for="name" class="text-info">Name:</label><br>
     <input type="text" name="person_name" id="name" class="form-control" placeholder="Name from person">
+
     <input type="submit" name="submit" value="Search">
 </form>
 
 <h1>[[${msg}]]</h1>
+
+<ul>
+    <li th:each="p : ${persons}">
+        [[${p.person_id}]] [[${m.person_name}]]
+    </li>
+</ul>
 </body>
 </html>

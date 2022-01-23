@@ -32,8 +32,11 @@ public class MainService {
    public List<Movie> FindAllMoviesByDirector(String person_name){
        return movieRepo.FindByDirector(person_name);
    }
-   public void CreatePerson(Long id, String person_name){
-       personRepo.createPerson(id,person_name);
+   public void CreatePerson(Long person_id, String person_name){
+       Person person1 = new Person();
+       person1.setPerson_id(person_id);
+       person1.setPerson_name(person_name);
+       personRepo.save(person1);
    }
    public List<Person> PersonList(){
        return personRepo.findAll();

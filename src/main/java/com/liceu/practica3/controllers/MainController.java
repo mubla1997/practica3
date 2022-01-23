@@ -54,9 +54,11 @@ public class MainController {
     }
 
     @GetMapping("/createActor")
-    public String createActor(Model model, @RequestParam(required = false) Long id, @RequestParam(required = false) String person_name){
-        mainService.CreatePerson(id, person_name);
+    public String createActor(Model model, @RequestParam(required = false) Long person_id, @RequestParam(required = false) String person_name){
+        mainService.CreatePerson(person_id,person_name);
+        List<Person> persons = mainService.PersonList();
         model.addAttribute("msg", "Add person Complete!");
+        model.addAttribute("persons", persons);
         return "createdPersons";
     }
 }
