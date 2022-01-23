@@ -70,7 +70,7 @@ public class Movie_cast {
     private Person person;
 
     @Nullable
-    private String cast_name;
+    private String character_name;
 
     @Nullable
     private int cast_order;
@@ -111,12 +111,12 @@ public class Movie_cast {
     }
 
     @Nullable
-    public String getCast_name() {
-        return cast_name;
+    public String getCharacter_name() {
+        return character_name;
     }
 
-    public void setCast_name(@Nullable String cast_name) {
-        this.cast_name = cast_name;
+    public void setCharacter_name(@Nullable String character_name) {
+        this.character_name = character_name;
     }
 
     public int getCast_order() {

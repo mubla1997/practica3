@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Movie_genre {
+public class Movie_genres {
     @Embeddable
     public static class PK implements Serializable{
         @Column(nullable = false, updatable = false)

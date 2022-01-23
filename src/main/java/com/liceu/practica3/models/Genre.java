@@ -15,7 +15,7 @@ public class Genre {
     private String genre_name;
 
     @OneToMany(mappedBy = "genre")
-    Set<Movie_genre> movie_genres;
+    Set<Movie_genres> movie_genres;
 
     public Long getGenre_id() {
         return genre_id;
@@ -34,11 +34,11 @@ public class Genre {
         this.genre_name = genre_name;
     }
 
-    public Set <Movie_genre> getMovie_genres() {
+    public Set <Movie_genres> getMovie_genres() {
         return movie_genres;
     }
 
-    public void setMovie_genres(Set <Movie_genre> movie_genres) {
+    public void setMovie_genres(Set <Movie_genres> movie_genres) {
         this.movie_genres = movie_genres;
     }
 }

@@ -65,7 +65,7 @@ public class Movie {
     Set<Movie_languages> movie_languages;
 
     @OneToMany(mappedBy = "movie")
-    Set<Movie_genre> movie_genres;
+    Set<Movie_genres> movie_genres;
 
     @OneToMany(mappedBy = "movie")
     Set<Movie_keywords> movie_keywords;
@@ -223,11 +223,11 @@ public class Movie {
         this.movie_languages = movie_languages;
     }
 
-    public Set <Movie_genre> getMovie_genres() {
+    public Set <Movie_genres> getMovie_genres() {
         return movie_genres;
     }
 
-    public void setMovie_genres(Set <Movie_genre> movie_genres) {
+    public void setMovie_genres(Set <Movie_genres> movie_genres) {
         this.movie_genres = movie_genres;
     }
 

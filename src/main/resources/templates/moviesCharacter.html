@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Movies from Character</title>
+</head>
+<body>
+<h1>Movies from Character</h1>
+
+<form id="form" class="form" action="" method="get">
+    <label for="character" class="text-info">Character:</label><br>
+    <input type="text" name="character_name" id="character" class="form-control" placeholder="Character from movie">
+    <input type="submit" name="submit" value="Search">
+</form>
+
+<ul>
+    <li th:each="m : ${movies}">
+        [[${m.movie_id}]] [[${m.title}]] [[${m.budget}]] [[${m.homepage}]] [[${m.overview}]] [[${m.popularity}]]
+        [[${m.release_date}]] [[${m.revenue}]] [[${m.runtime}]] [[${m.movie_status}]] [[${m.tagline}]] [[${m.vote_average}]]
+        [[${m.vote_count}]]
+    </li>
+</ul>
+</body>
+</html>
