@@ -14,7 +14,7 @@ public class Movie {
     private Long movie_id;
 
     @Nullable
-    private String tittle;
+    private String title;
 
     @Nullable
     private int budget;
@@ -49,25 +49,25 @@ public class Movie {
     @Nullable
     private int vote_count;
 
-    @OneToMany(mappedBy = "movie_id")
+    @OneToMany(mappedBy = "movie")
     Set<Movie_crew> movie_crews;
 
-    @OneToMany(mappedBy = "movie_id")
+    @OneToMany(mappedBy = "movie")
     Set<Movie_cast> movie_casts;
 
-    @OneToMany(mappedBy = "movie_id")
+    @OneToMany(mappedBy = "movie")
     Set<Movie_company> movie_companies;
 
-    @OneToMany(mappedBy = "movie_id")
+    @OneToMany(mappedBy = "movie")
     Set<Production_country> production_countries;
 
-    @OneToMany(mappedBy = "movie_id")
+    @OneToMany(mappedBy = "movie")
     Set<Movie_languages> movie_languages;
 
-    @OneToMany(mappedBy = "movie_id")
+    @OneToMany(mappedBy = "movie")
     Set<Movie_genre> movie_genres;
 
-    @OneToMany(mappedBy = "movie_id")
+    @OneToMany(mappedBy = "movie")
     Set<Movie_keywords> movie_keywords;
 
     public Long getMovie_id() {
@@ -79,12 +79,12 @@ public class Movie {
     }
 
     @Nullable
-    public String getTittle() {
-        return tittle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTittle(@Nullable String tittle) {
-        this.tittle = tittle;
+    public void setTitle(@Nullable String title) {
+        this.title = title;
     }
 
     public int getBudget() {

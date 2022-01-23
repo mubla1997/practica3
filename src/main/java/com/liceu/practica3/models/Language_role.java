@@ -14,7 +14,7 @@ public class Language_role {
     @Nullable
     private String language_role;
 
-    @OneToMany(mappedBy = "language_role_id")
+    @OneToMany(mappedBy = "language_role")
     Set<Movie_languages> movie_languages;
 
     public Long getRole_id() {

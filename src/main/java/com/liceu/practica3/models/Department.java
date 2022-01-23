@@ -14,7 +14,7 @@ public class Department {
     @Nullable
     private String department_name;
 
-    @OneToMany(mappedBy = "department_id")
+    @OneToMany(mappedBy = "department")
     Set<Movie_crew> movie_crews;
 
     public Long getDepartment_id() {

@@ -14,7 +14,7 @@ public class Production_company {
     @Nullable
     private String company_name;
 
-    @OneToMany(mappedBy = "company_id")
+    @OneToMany(mappedBy = "production_company")
     Set<Movie_company> movie_companies;
 
     public Long getCompany_id() {

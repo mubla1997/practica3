@@ -17,7 +17,7 @@ public class Country {
     @Nullable
     private String country_name;
 
-    @OneToMany(mappedBy = "country_id")
+    @OneToMany(mappedBy = "country")
     Set<Production_country> production_countries;
 
     public Long getCountry_id() {

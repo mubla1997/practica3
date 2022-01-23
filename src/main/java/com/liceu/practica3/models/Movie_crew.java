@@ -55,16 +55,19 @@ public class Movie_crew {
     @EmbeddedId
     private PK pk;
 
+    @Nullable
     @ManyToOne
-    @JoinColumn(name ="department_id", insertable = false, updatable = false)
+    @JoinColumn(name ="department_id", insertable = false, updatable = false,nullable = true)
     private Department department;
 
+    @Nullable
     @ManyToOne
-    @JoinColumn(name = "movie_id", insertable = false, updatable = false)
+    @JoinColumn(name = "movie_id", insertable = false, updatable = false, nullable = true)
     private Movie movie;
 
+    @Nullable
     @ManyToOne
-    @JoinColumn(name = "person_id", insertable = false, updatable = false)
+    @JoinColumn(name = "person_id", insertable = false, updatable = false, nullable = true)
     private Person person;
 
     @Nullable
@@ -78,27 +81,30 @@ public class Movie_crew {
         this.pk = pk;
     }
 
+    @Nullable
     public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(Department department) {
+    public void setDepartment(@Nullable Department department) {
         this.department = department;
     }
 
+    @Nullable
     public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(Movie movie) {
+    public void setMovie(@Nullable Movie movie) {
         this.movie = movie;
     }
 
+    @Nullable
     public Person getPerson() {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(@Nullable Person person) {
         this.person = person;
     }
 

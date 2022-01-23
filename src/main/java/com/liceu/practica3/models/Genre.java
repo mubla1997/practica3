@@ -14,7 +14,7 @@ public class Genre {
     @Nullable
     private String genre_name;
 
-    @OneToMany(mappedBy = "genre_id")
+    @OneToMany(mappedBy = "genre")
     Set<Movie_genre> movie_genres;
 
     public Long getGenre_id() {

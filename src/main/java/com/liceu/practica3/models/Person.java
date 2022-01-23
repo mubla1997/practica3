@@ -14,10 +14,10 @@ public class Person {
     @Nullable
     private String person_name;
 
-    @OneToMany(mappedBy = "person_id")
+    @OneToMany(mappedBy = "person")
     Set <Movie_crew> movie_crews;
 
-    @OneToMany(mappedBy = "person_id")
+    @OneToMany(mappedBy = "person")
     Set<Movie_cast> movie_casts;
 
     public Long getPerson_id() {

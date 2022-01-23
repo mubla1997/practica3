@@ -54,16 +54,19 @@ public class Movie_cast {
     @EmbeddedId
     private PK pk;
 
+    @Nullable
     @ManyToOne
-    @JoinColumn(name ="movie_id", insertable = false, updatable = false)
+    @JoinColumn(name ="movie_id", insertable = false, updatable = false, nullable = true)
     private Movie movie;
 
+    @Nullable
     @ManyToOne
-    @JoinColumn(name ="gender_id", insertable = false, updatable  = false)
+    @JoinColumn(name ="gender_id", insertable = false, updatable  = false, nullable = true)
     private Gender gender;
 
+    @Nullable
     @ManyToOne
-    @JoinColumn(name = "person_id", insertable = false, updatable = false)
+    @JoinColumn(name = "person_id", insertable = false, updatable = false, nullable = true)
     private Person person;
 
     @Nullable
@@ -80,27 +83,30 @@ public class Movie_cast {
         this.pk = pk;
     }
 
+    @Nullable
     public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(Movie movie) {
+    public void setMovie(@Nullable Movie movie) {
         this.movie = movie;
     }
 
+    @Nullable
     public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(@Nullable Gender gender) {
         this.gender = gender;
     }
 
+    @Nullable
     public Person getPerson() {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(@Nullable Person person) {
         this.person = person;
     }
 

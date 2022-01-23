@@ -1,5 +1,7 @@
 package com.liceu.practica3.models;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -53,16 +55,19 @@ public class Movie_languages {
     @EmbeddedId
     private PK pk;
 
+    @Nullable
     @ManyToOne
-    @JoinColumn(name = "movie_id", insertable = false, updatable = false)
+    @JoinColumn(name = "movie_id", insertable = false, updatable = false,nullable = true)
     private Movie movie;
 
+    @Nullable
     @ManyToOne
-    @JoinColumn(name = "language_id", insertable = false, updatable = false)
+    @JoinColumn(name = "language_id", insertable = false, updatable = false,nullable = true)
     private Language language;
 
+    @Nullable
     @ManyToOne
-    @JoinColumn(name = "language_role_id", insertable = false, updatable = false)
+    @JoinColumn(name = "language_role_id", insertable = false, updatable = false,nullable = true)
     private Language_role language_role;
 
     public PK getPk() {
@@ -73,27 +78,30 @@ public class Movie_languages {
         this.pk = pk;
     }
 
+    @Nullable
     public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(Movie movie) {
+    public void setMovie(@Nullable Movie movie) {
         this.movie = movie;
     }
 
+    @Nullable
     public Language getLanguage() {
         return language;
     }
 
-    public void setLanguage(Language language) {
+    public void setLanguage(@Nullable Language language) {
         this.language = language;
     }
 
+    @Nullable
     public Language_role getLanguage_role() {
         return language_role;
     }
 
-    public void setLanguage_role(Language_role language_role) {
+    public void setLanguage_role(@Nullable Language_role language_role) {
         this.language_role = language_role;
     }
 }

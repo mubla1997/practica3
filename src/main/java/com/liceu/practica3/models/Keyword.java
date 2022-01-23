@@ -14,7 +14,7 @@ public class Keyword {
     @Nullable
     private String keyword_name;
 
-    @OneToMany(mappedBy = "keyword_id")
+    @OneToMany(mappedBy = "keyword")
     Set<Movie_keywords> movie_keywords;
 
     public Long getKeyword_id() {

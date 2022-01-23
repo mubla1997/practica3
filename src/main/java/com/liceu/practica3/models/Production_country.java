@@ -1,5 +1,7 @@
 package com.liceu.practica3.models;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -40,12 +42,14 @@ public class Production_country {
    @EmbeddedId
     private PK pk;
 
+   @Nullable
    @ManyToOne
-    @JoinColumn(name = "movie_id", insertable = false, updatable = false)
+    @JoinColumn(name = "movie_id", insertable = false, updatable = false,nullable = true)
     private Movie movie;
 
+   @Nullable
    @ManyToOne
-    @JoinColumn(name = "country_id", insertable = false, updatable = false)
+    @JoinColumn(name = "country_id", insertable = false, updatable = false,nullable = true)
     private Country country;
 
     public PK getPk() {
@@ -56,19 +60,21 @@ public class Production_country {
         this.pk = pk;
     }
 
+    @Nullable
     public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(Movie movie) {
+    public void setMovie(@Nullable Movie movie) {
         this.movie = movie;
     }
 
+    @Nullable
     public Country getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(@Nullable Country country) {
         this.country = country;
     }
 }

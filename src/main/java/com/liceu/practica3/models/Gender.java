@@ -14,7 +14,7 @@ public class Gender {
     @Nullable
     private String gender;
 
-    @OneToMany(mappedBy = "gender_id")
+    @OneToMany(mappedBy = "gender")
     Set<Movie_cast> movie_casts;
 
     public Long getGender_id() {
