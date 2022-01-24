@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #252323;
+}
+h1{
+    background-color: #000000;
+}
+
+p{
+margin-top: 35px;
+margin-left: 550px;
+height: 50px;
+width:  265px;
+margin-right: 100px;
+}

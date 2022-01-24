@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonRepo extends JpaRepository<Person, Long> {
 
-    @Query(nativeQuery = true, value = "insert into person(person_id, person_name) values (:person_id, :person_name)")
-    void createPerson(@Param("person_id") Long person_id, @Param("person_name") String person_name);
+    @Query(nativeQuery = true, value = "select * from person order by person_id desc limit 1 ")
+    Person obtainMaxId();
 }
+
+

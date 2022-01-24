@@ -3,6 +3,7 @@ package com.liceu.practica3.controllers;
 import com.liceu.practica3.models.Movie;
 import com.liceu.practica3.models.Person;
 import com.liceu.practica3.services.MainService;
+import com.sun.xml.bind.v2.runtime.output.SAXOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,21 @@ public class MainController {
     public String index(){
         return "index";
     }
+
+    @GetMapping("/main")
+    public String main(){return "main";}
+
+    @GetMapping("/search")
+    public String search(){return "search";}
+
+    @GetMapping("/create")
+    public String create(){return "create";}
+
+    @GetMapping("/edit")
+    public String edit(){return "edit";}
+
+    @GetMapping("/delete")
+    public String delete(){return "delete";}
 
     @GetMapping("/moviesT")
     public String movies(Model model, @RequestParam(required = false) String title ){
@@ -54,11 +70,10 @@ public class MainController {
     }
 
     @GetMapping("/createActor")
-    public String createActor(Model model, @RequestParam(required = false) Long person_id, @RequestParam(required = false) String person_name){
-        mainService.CreatePerson(person_id,person_name);
-        List<Person> persons = mainService.PersonList();
-        model.addAttribute("msg", "Add person Complete!");
-        model.addAttribute("persons", persons);
+    public String createActor(Model model,@RequestParam(required = false) String person_name){
+        Long person_id = mainService.ObtainMaxIdPerson().getPerson_id();
+        mainService.CreateNewPerson(person_id,person_name);
+        mainService.PersonList();
         return "createdPersons";
     }
 }
