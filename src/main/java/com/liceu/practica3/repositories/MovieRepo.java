@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface MovieRepo extends JpaRepository<Movie, Long> {
-    @Query(nativeQuery = true, value = "Select * from movie where title = :title")
+    @Query(nativeQuery = true, value = "Select * from movie where title like %:title%")
     List <Movie> FindByTitle(@Param("title")String title);
 
     @Query(nativeQuery = true, value = "select * from movie as m inner join movie_cast as mc on " +

@@ -1,22 +1,44 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Movies from Actor</title>
+    <link rel ="stylesheet" href="/table.css">
 </head>
 <body>
-<h1>Movies from Actor</h1>
+<h1 class="text-center text-info">MOVIE'S DATABASE 2021</h1>
+<h2 class="text-center">Movies from Actor</h2>
+
+<a  href="/search"><button type="button" class="btn btn-secondary mr-3">Go Back</button></a>
 
 <form id="form" class="form" action="" method="get">
-    <label for="actor" class="text-info">Actor:</label><br>
-    <input type="text" name="person_name" id="actor" class="form-control" placeholder="Actor from movie">
-    <input type="submit" name="submit" value="Search">
+    <label for="text" id="label" class="text-info">Actor:</label><br>
+    <div class="container d-flex flex-inline" >
+    <input type="text" name="person_name" id="text" class="form-control" placeholder="Actor from movie">
+    <input type="submit" name="submit" class="btn btn-primary mr-3" value="Search">
+    </div>
 </form>
 
-<ul>
-    <li th:each="m : ${movies}">
-        [[${m.movie_id}]] [[${m.title}]] [[${m.budget}]] [[${m.homepage}]] [[${m.overview}]] [[${m.popularity}]]
-        [[${m.release_date}]] [[${m.revenue}]] [[${m.runtime}]] [[${m.movie_status}]] [[${m.tagline}]] [[${m.vote_average}]]
-        [[${m.vote_count}]]
-    </li>
-</ul>
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Budget</th>
+        <th scope="col">Homepage</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="m : ${movies}">
+        <td>[[${m.movie_id}]]</td>
+        <td>[[${m.title}]]</td>
+        <td>[[${m.budget}]]</td>
+        <td>[[${m.homepage}]]</td>
+    </tr>
+
+    </tbody>
+</table>
 </body>
 </html>
