@@ -32,9 +32,8 @@ public class MainService {
    public List<Movie> FindAllMoviesByDirector(String person_name){
        return movieRepo.FindByDirector(person_name);
    }
-   public void CreateNewPerson(Long id, String name){
+   public void CreateNewPerson(String name){
        Person person = new Person();
-       person.setPerson_id(id);
        person.setPerson_name(name);
        personRepo.save(person);
    }
@@ -42,5 +41,10 @@ public class MainService {
        return personRepo.findAll();
    }
 
-   public Person ObtainMaxIdPerson(){ return personRepo.obtainMaxId();}
+   public List<String> ObtainAllActors(String person_name){
+       return movieRepo.FindAllActors(person_name);
+   }
+
+   public List<Person> ObtainListLastPersons(){
+       return personRepo.obtainListPersonCreated();}
 }

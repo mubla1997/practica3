@@ -1,24 +1,39 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Create Actor</title>
+    <link rel ="stylesheet" href="/table.css">
 </head>
 <body>
-<h1>Create Actor</h1>
+<h1 class="text-center text-info">MOVIE'S DATABASE 2021</h1>
+<h2 class="text-center">Create Actor</h2>
 
-<form id="form" class="form" action="" method="get">
+<a  href="/create"><button type="button" class="btn btn-secondary mr-3">Go Back</button></a>
 
-    <label for="name" class="text-info">Actor Name:</label><br>
-    <input type="text" name="person_name" id="name" class="form-control" placeholder="Name from actor">
-
-    <input type="submit" name="submit" value="Create">
+<form id="form" class="form" action="" method="post">
+    <label for="text" id="label" class="text-info">Actor Name:</label><br>
+    <div class="container d-flex flex-inline" >
+    <input type="text" name="person_name" id="text" class="form-control" placeholder="Name from actor">
+    <input type="submit" name="submit" class="btn btn-primary mr-3" value="Create">
+    </div>
 </form>
 
-<h1>[[${msg}]]</h1>
-
-<ul>
-    <li th:each="p : ${persons}">
-        [[${p.person_id}]] [[${m.person_name}]]
-    </li>
-</ul>
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${persons}">
+        <td>[[${p.person_id}]]</td>
+        <td>[[${p.person_name}]]</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

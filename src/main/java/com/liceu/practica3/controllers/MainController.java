@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -50,6 +52,12 @@ public class MainController {
         model.addAttribute("movies", movies);
         return "moviesActor";
     }
+    //Autocompletado
+    @GetMapping(value = "/getActors",produces = {"application/json"})
+    public @ResponseBody List<String> getActors(@RequestParam(required = false) String person_name ){
+    List<String> actors = mainService.ObtainAllActors(person_name);
+    return actors;
+    }
     @GetMapping("/moviesC")
     public String moviesByCharacter(Model model,@RequestParam(required = false) String character_name ) {
         List <Movie> movies = mainService.FindAllMoviesByCharacter(character_name);
@@ -70,10 +78,15 @@ public class MainController {
     }
 
     @GetMapping("/createActor")
-    public String createActor(Model model,@RequestParam(required = false) String person_name){
-        Long person_id = mainService.ObtainMaxIdPerson().getPerson_id();
-        mainService.CreateNewPerson(person_id,person_name);
-        mainService.PersonList();
+    public String createActorGet(){
+        return "createdPersons";
+    }
+    @PostMapping("/createActor")
+    public String createActorPost(Model model,@RequestParam(required = false) String person_name) {
+
+        mainService.CreateNewPerson(person_name);
+        List<Person> persons = mainService.ObtainListLastPersons();
+        model.addAttribute("persons", persons);
         return "createdPersons";
     }
 }
