@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.math.BigInteger;
+import java.sql.Date;
+import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -58,6 +61,7 @@ public class MainController {
     List<String> actors = mainService.ObtainAllActors(person_name);
     return actors;
     }
+
     @GetMapping("/moviesC")
     public String moviesByCharacter(Model model,@RequestParam(required = false) String character_name ) {
         List <Movie> movies = mainService.FindAllMoviesByCharacter(character_name);
@@ -81,6 +85,7 @@ public class MainController {
     public String createActorGet(){
         return "createdPersons";
     }
+
     @PostMapping("/createActor")
     public String createActorPost(Model model,@RequestParam(required = false) String person_name) {
 
@@ -89,4 +94,30 @@ public class MainController {
         model.addAttribute("persons", persons);
         return "createdPersons";
     }
+
+    @GetMapping("/createMovie")
+        public String createMovieGet(){
+            return "createMovie";
+    }
+    @PostMapping("/createMovie")
+    public String createMoviePost(Model model,@RequestParam(required = false) String title,
+                                  @RequestParam(required = false) int budget,
+                                  @RequestParam(required = false) String homepage,
+                                  @RequestParam(required = false) String overview,
+                                  @RequestParam(required = false) Double popularity,
+                                  @RequestParam(required = false) String release_date,
+                                  @RequestParam(required = false) BigInteger revenue,
+                                  @RequestParam(required = false) int runtime,
+                                  @RequestParam(required = false) String movie_status,
+                                  @RequestParam(required = false) String tagline,
+                                  @RequestParam(required = false) Double vote_average,
+                                  @RequestParam(required = false) int vote_count) throws ParseException {
+         mainService.CreateNewMovie(title,budget,homepage,overview,popularity,release_date,revenue,runtime,movie_status,
+                tagline,vote_average,vote_count);
+         List<Movie> movies = mainService.ObtainListLastMovies();
+         model.addAttribute("movies",movies);
+         return "createMovie";
+
+    }
+
 }

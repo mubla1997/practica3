@@ -7,6 +7,10 @@ import com.liceu.practica3.repositories.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service
@@ -37,6 +41,26 @@ public class MainService {
        person.setPerson_name(name);
        personRepo.save(person);
    }
+   public void CreateNewMovie(String title, int budget, String homepage, String overview, Double popularity,
+                              String release_date, BigInteger revenue,int runtime,String movie_status,String tagline,
+                              Double vote_average,int vote_count) {
+
+       Movie movie = new Movie();
+       movie.setTitle(title);
+       movie.setBudget(budget);
+       movie.setHomepage(homepage);
+       movie.setOverview(overview);
+       movie.setPopularity(popularity);
+       movie.setRelease_date(java.sql.Date.valueOf(release_date));
+       movie.setRevenue(revenue);
+       movie.setRuntime(runtime);
+       movie.setMovie_status(movie_status);
+       movie.setTagline(tagline);
+       movie.setVote_average(vote_average);
+       movie.setVote_count(vote_count);
+       movieRepo.save(movie);
+   }
+
    public List<Person> PersonList(){
        return personRepo.findAll();
    }
@@ -47,4 +71,8 @@ public class MainService {
 
    public List<Person> ObtainListLastPersons(){
        return personRepo.obtainListPersonCreated();}
+
+public List<Movie> ObtainListLastMovies(){
+    return movieRepo.listMovieLimit10();
+}
 }

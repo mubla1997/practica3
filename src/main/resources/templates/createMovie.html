@@ -1,0 +1,124 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Create Movie</title>
+    <link rel ="stylesheet" href="/createMovie.css">
+</head>
+<body>
+<h1 class="text-center text-info">MOVIE'S DATABASE 2021</h1>
+
+<a  href="/create"><button type="button" id="b" class="btn btn-secondary mr-3">Go Back</button></a>
+
+<div id="form">
+    <div class="container">
+        <div id="form-row" class="row justify-content-center align-items-center">
+            <div id="form-column" class="col-md-6">
+                <div id="form-box" class="col-md-12">
+                    <form id="form-form" class="form" action="" method="post">
+                        <h3 class="text-center text-info">Create Movie</h3>
+                        <div class="form-group">
+                            <label for="title" class="text-info">Title:</label><br>
+                            <input type="text" name="title" id="title" class="form-control" placeholder="Casi 300">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="budget" class="text-info">Budget:</label><br>
+                            <input type="number" name="budget" id="budget" class="form-control" placeholder="500000000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="homepage" class="text-info">Homepage:</label><br>
+                            <input type="text" name="homepage" id="homepage" class="form-control"placeholder="https://disney.com/Casi300">
+                        </div>
+                        <div class="form-group">
+                            <label for="overview" class="text-info">Overview:</label>
+                            <input type="text" name="overview" id="overview" class="form-control" placeholder="Overview from movie">
+                        </div>
+                        <div class="form-group">
+                            <label for="popularity" class="text-info">Popularity:</label>
+                            <input type="number" name="popularity" id="popularity" class="form-control" placeholder="100.0">
+                        </div>
+                        <div class="form-group">
+                            <label for="release_date" class="text-info">Release_date:</label>
+                            <input type="text" name="release_date" id="release_date" class="form-control" placeholder="2010-09-23">
+                        </div>
+                        <div class="form-group">
+                            <label for="revenue" class="text-info">Revenue:</label>
+                            <input type="text" name="revenue" id="revenue" class="form-control" placeholder="50000">
+                        </div>
+                        <div class="form-group">
+                            <label for="runtime" class="text-info">Runtime:</label>
+                            <input type="number" name="runtime" id="runtime" class="form-control" placeholder="90">
+                        </div>
+                        <div class="form-group">
+                            <label for="movie_status" class="text-info">Movie_status:</label>
+                            <select name = "movie_status" id="movie_status" class="custom-select">
+                                <option selected>Choose...</option>
+                                <option value= "Released"> Released </option>
+                                <option value= "Filming"> Filming </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tagline" class="text-info">Tagline:</label>
+                            <input type="text" name="tagline" id="tagline" class="form-control" placeholder="For Sparta">
+                        </div>
+                        <div class="form-group">
+                            <label for="vote_average" class="text-info">Vote_average:</label>
+                            <input type="number" name="vote_average" id="vote_average" class="form-control" placeholder="10.0">
+                        </div>
+                        <div class="form-group">
+                            <label for="vote_count" class="text-info">Vote_count:</label>
+                            <input type="number" name="vote_count" id="vote_count" class="form-control" placeholder="35000">
+                        </div>
+                        <div >
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Create">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Budget</th>
+        <th scope="col">Homepage</th>
+        <th scope="col">Overview</th>
+        <th scope="col">Popularity</th>
+        <th scope="col">Release_date</th>
+        <th scope="col">Revenue</th>
+        <th scope="col">Runtime</th>
+        <th scope="col">Movie_status</th>
+        <th scope="col">Tagline</th>
+        <th scope="col">Vote_average</th>
+        <th scope="col">Vote_count</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="m : ${movies}">
+        <td>[[${m.movie_id}]]</td>
+        <td>[[${m.title}]]</td>
+        <td>[[${m.budget}]]</td>
+        <td>[[${m.homepage}]]</td>
+        <td>[[${m.overview}]]</td>
+        <td>[[${m.popularity}]]</td>
+        <td>[[${m.release_date}]]</td>
+        <td>[[${m.revenue}]]</td>
+        <td>[[${m.runtime}]]</td>
+        <td>[[${m.movie_status}]]</td>
+        <td>[[${m.tagline}]]</td>
+        <td>[[${m.vote_average}]]</td>
+        <td>[[${m.vote_count}]]</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

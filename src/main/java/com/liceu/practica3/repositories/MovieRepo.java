@@ -33,6 +33,9 @@ public interface MovieRepo extends JpaRepository<Movie, Long> {
 
     @Query(nativeQuery = true, value = "select person_name from person as p left join movie_cast as mc on " +
             "p.person_id = mc.person_id inner join movie m on m.movie_id = mc.movie_id where " +
-            "person_name = :person_name")
+            "person_name like %:person_name%")
     List<String> FindAllActors(@Param("person_name")String person_name);
+
+    @Query(nativeQuery = true, value = "select * from movie order by movie_id desc limit 10")
+    List<Movie> listMovieLimit10();
 }
