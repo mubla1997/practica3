@@ -49,6 +49,13 @@ public class MainController {
         model.addAttribute("movies", movies);
         return "moviesTitle";
     }
+
+    //Autocompletado
+    @GetMapping(value = "/getTitles",produces = {"application/json"})
+    public @ResponseBody List<String> getTitles(@RequestParam(required = false) String term ){
+        return mainService.ObtainAllTitles(term);
+    }
+
     @GetMapping("/moviesA")
     public String moviesByActor(Model model,@RequestParam(required = false) String person_name ) {
         List <Movie> movies = mainService.FindAllMoviesByActor(person_name);
@@ -58,8 +65,7 @@ public class MainController {
     //Autocompletado
     @GetMapping(value = "/getActors",produces = {"application/json"})
     public @ResponseBody List<String> getActors(@RequestParam(required = false) String term ){
-    List<String> actors = mainService.ObtainAllActors(term);
-    return actors;
+    return mainService.ObtainAllActors(term);
     }
 
     @GetMapping("/moviesC")
@@ -68,6 +74,14 @@ public class MainController {
         model.addAttribute("movies", movies);
         return "moviesCharacter";
     }
+
+    //Autocompletado
+    @GetMapping(value = "/getCharacters",produces = {"application/json"})
+    public @ResponseBody List<String> getCharacters(@RequestParam(required = false) String term ){
+        return  mainService.ObtainAllCharacters(term);
+
+    }
+
     @GetMapping("/moviesG")
     public String moviesByGenre(Model model,@RequestParam(required = false) String genre_name ) {
         List <Movie> movies = mainService.FindALlMoviesByGenre(genre_name);
@@ -79,6 +93,12 @@ public class MainController {
         List <Movie> movies = mainService.FindAllMoviesByDirector(person_name);
         model.addAttribute("movies", movies);
         return "moviesDirector";
+    }
+
+    //Autocompletado
+    @GetMapping(value = "/getDirectors",produces = {"application/json"})
+    public @ResponseBody List<String> getDirectors(@RequestParam(required = false) String term ){
+        return mainService.ObtainAllDirectors(term);
     }
 
     @GetMapping("/createActor")

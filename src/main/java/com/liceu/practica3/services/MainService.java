@@ -72,7 +72,17 @@ public class MainService {
    public List<Person> ObtainListLastPersons(){
        return personRepo.obtainListPersonCreated();}
 
-public List<Movie> ObtainListLastMovies(){
+   public List<Movie> ObtainListLastMovies(){
     return movieRepo.listMovieLimit10();
 }
+
+   public List<String> ObtainAllCharacters(String character_name){
+       return movieRepo.FindAllCharacters(character_name);
+   }
+   public List<String> ObtainAllTitles(String title){
+       return movieRepo.FindAllTitles(title);
+   }
+   public List<String> ObtainAllDirectors(String person_name){
+       return movieRepo.FindAllDirectors(person_name);
+   }
 }

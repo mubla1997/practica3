@@ -2,7 +2,16 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet"
+      href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+
+<script src="http://code.jquery.com/jquery-1.8.2.js"
+        type="text/javascript"></script>
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"
+        type="text/javascript"></script>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Movies from title</title>
     <link rel ="stylesheet" href="/table.css">
@@ -40,5 +49,12 @@
 
     </tbody>
 </table>
+<script>
+$(() => {
+    $('#text').autocomplete({
+        source : '/getTitles'
+    });
+});
+</script>
 </body>
 </html>
