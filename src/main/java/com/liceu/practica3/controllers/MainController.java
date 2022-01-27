@@ -57,8 +57,8 @@ public class MainController {
     }
     //Autocompletado
     @GetMapping(value = "/getActors",produces = {"application/json"})
-    public @ResponseBody List<String> getActors(@RequestParam(required = false) String person_name ){
-    List<String> actors = mainService.ObtainAllActors(person_name);
+    public @ResponseBody List<String> getActors(@RequestParam(required = false) String term ){
+    List<String> actors = mainService.ObtainAllActors(term);
     return actors;
     }
 
