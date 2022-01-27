@@ -1,7 +1,6 @@
 package com.liceu.practica3.repositories;
 
 import com.liceu.practica3.models.Movie;
-import com.liceu.practica3.models.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -50,4 +49,9 @@ public interface MovieRepo extends JpaRepository<Movie, Long> {
             "p.person_id = mc.person_id inner join movie m on m.movie_id = mc.movie_id where " +
             " person_name like %:person_name% group by person_name and job = 'Director'")
     List<String> FindAllDirectors(@Param("person_name")String person_name);
+
+    @Query(nativeQuery = true, value = "select p.person_name as Actor, m.title as Pelicula from movie as m " +
+            "inner join movie_cast mc on m.movie_id = mc.movie_id left join person as p on p.person_id = mc.person_id " +
+            "where p.person_name = :person_name and m.title = :title;")
+    List<String> FindActorInsertMovie(@Param("person_name")String person_name, @Param("title")String title);
 }

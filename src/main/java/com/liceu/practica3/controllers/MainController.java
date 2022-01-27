@@ -140,4 +140,18 @@ public class MainController {
 
     }
 
+    @GetMapping("/introduceActor")
+    public String getInsertActor(){return "insertActorInMovie";}
+
+    @PostMapping("/introduceActor")
+    public String postInsertActor(Model model, @RequestParam(required = false) String title,
+                                  @RequestParam(required = false) String person_name,
+                                  @RequestParam(required = false) String character_name){
+        Person person = mainService.ObtainPerson(person_name);
+        Movie movie = mainService.ObtainMovie(title);
+        mainService.InsertActorInsideMovie(movie,person,character_name);
+       List<String> result = mainService.ObtainActorInsertMovie(person_name, title);
+       model.addAttribute("result", result);
+        return "insertActorInMovie";
+    }
 }

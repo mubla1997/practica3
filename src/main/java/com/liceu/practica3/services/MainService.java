@@ -1,8 +1,10 @@
 package com.liceu.practica3.services;
 
 import com.liceu.practica3.models.Movie;
+import com.liceu.practica3.models.Movie_cast;
 import com.liceu.practica3.models.Person;
 import com.liceu.practica3.repositories.MovieRepo;
+import com.liceu.practica3.repositories.Movie_castRepo;
 import com.liceu.practica3.repositories.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class MainService {
 
     @Autowired
     PersonRepo personRepo;
+
+    @Autowired
+    Movie_castRepo movie_castRepo;
 
    public List<Movie> FindAllMoviesByTitle(String title){
         return movieRepo.FindByTitle(title);
@@ -84,5 +89,24 @@ public class MainService {
    }
    public List<String> ObtainAllDirectors(String person_name){
        return movieRepo.FindAllDirectors(person_name);
+   }
+
+   public void InsertActorInsideMovie(Movie movie, Person person, String character_Name ){
+       Movie_cast movie_cast = new Movie_cast();
+       movie_cast.setMovie(movie);
+       movie_cast.setPerson(person);
+       movie_cast.setCharacter_name(character_Name);
+       movie_castRepo.save(movie_cast);
+
+   }
+   public Movie ObtainMovie(String title){
+       return movie_castRepo.getMovie(title);
+   }
+
+   public Person ObtainPerson(String person_name){
+       return movie_castRepo.getPerson(person_name);
+   }
+   public List<String> ObtainActorInsertMovie(String person_name, String title){
+       return movieRepo.FindActorInsertMovie(person_name, title);
    }
 }

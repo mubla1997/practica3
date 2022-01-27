@@ -14,9 +14,28 @@ h2{
     margin-right: 10px;
     margin-left: -100px;
 }
+#text2{
+    width: 300px;
+    margin-right: 10px;
+    margin-left: 30px;
+}
+#text3{
+    width: 300px;
+    margin-right: 10px;
+    margin-left: 30px;
+}
 #label{
+    margin-left: 30px;
+}
+#label2{
+    margin-left: 30px;
+}
+#label3{
     margin-left: 30px;
 }
 button{
     margin-top: -50px;
+}
+#create{
+    margin-left:30px;
 }
