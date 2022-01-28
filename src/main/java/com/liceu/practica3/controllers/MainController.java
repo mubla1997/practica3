@@ -1,5 +1,6 @@
 package com.liceu.practica3.controllers;
 
+import com.liceu.practica3.models.Gender;
 import com.liceu.practica3.models.Movie;
 import com.liceu.practica3.models.Person;
 import com.liceu.practica3.services.MainService;
@@ -140,16 +141,20 @@ public class MainController {
 
     }
 
-    @GetMapping("/introduceActor")
+    @GetMapping("/insertActorInMovie")
     public String getInsertActor(){return "insertActorInMovie";}
 
-    @PostMapping("/introduceActor")
+    @PostMapping("/insertActorInMovie")
     public String postInsertActor(Model model, @RequestParam(required = false) String title,
                                   @RequestParam(required = false) String person_name,
-                                  @RequestParam(required = false) String character_name){
+                                  @RequestParam(required = false) String character_name,
+                                  @RequestParam(required = false) Long gender_id){
+
         Person person = mainService.ObtainPerson(person_name);
         Movie movie = mainService.ObtainMovie(title);
-        mainService.InsertActorInsideMovie(movie,person,character_name);
+        Gender gender = mainService.ObtainGender(gender_id);
+
+        mainService.InsertActorInsideMovie(movie,person,gender,character_name);
        List<String> result = mainService.ObtainActorInsertMovie(person_name, title);
        model.addAttribute("result", result);
         return "insertActorInMovie";

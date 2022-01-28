@@ -21,20 +21,28 @@
 <h1 class="text-center text-info">MOVIE'S DATABASE 2021</h1>
 <h2 class="text-center">Insert actor in movie</h2>
 
-<a  href="/search"><button type="button" class="btn btn-secondary mr-3">Go Back</button></a>
+<a  href="/create"><button type="button" class="btn btn-secondary mr-3">Go Back</button></a>
 
-<form id="form" class="form" action="" method="get">
+<form id="form" class="form" action="" method="post">
     <label for="text" id="label" class="text-info">Actor Name:</label><br>
-    <div class="container d-flex flex-inline" >
-        <input type="text" name="person_name" id="text" class="form-control" placeholder="Actor name"><br>
-    </div>
-        <label for="text2" id="label2" class="text-info">Movie:</label><br>
-        <input type="text" name="title" id="text2" class="form-control" placeholder="Title from movie"><br>
+    <input type="text" name="person_name" id="text" class="form-control" placeholder="Actor name"><br>
 
-    <label for="text3" id="label3" class="text-info">Character Name:</label><br>
-    <input type="text" name="title" id="text3" class="form-control" placeholder="Name from character"><br>
+    <label for="text2" id="label2" class="text-info">Movie:</label><br>
+    <input type="text" name="title" id="text2" class="form-control" placeholder="Title from movie"><br>
 
-        <input type="submit" name="submit" id="create" class="btn btn-primary mr-3" value="Create">
+    <label for="text3" id="label3" class="text-info">Genre Actor:</label><br>
+    <select name = "gender_id" id="text3" class="custom-select">
+        <option selected>Choose...</option>
+        <option value= "0"> Unspecified </option>
+        <option value= "1"> Female </option>
+        <option value= "2"> Male </option>
+    </select>
+    </br>
+
+    <label for="text4" id="label4" class="text-info">Character Name:</label><br>
+    <input type="text" name="character_name" id="text4" class="form-control" placeholder="Name from character"><br>
+
+    <input type="submit" name="submit" id="create" class="btn btn-primary mr-3" value="Create">
 
 </form>
 
@@ -43,12 +51,16 @@
     <tr>
         <th scope="col">Actor</th>
         <th scope="col">Title</th>
+        <th scope="col">Actor Gender</th>
+        <th scope="col">Character name</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="r : ${result}">
         <td>[[${r.person_name}]]</td>
         <td>[[${r.title}]]</td>
+        <td>[[${r.gender_id}]]</td>
+        <td>[[${r.character_name}]]</td>
 
     </tr>
 
@@ -59,6 +71,11 @@
 $(() => {
     $('#text').autocomplete({
         source : '/getActors'
+    });
+});
+$(() => {
+    $('#text2').autocomplete({
+        source : '/getTitles'
     });
 });
 </script>

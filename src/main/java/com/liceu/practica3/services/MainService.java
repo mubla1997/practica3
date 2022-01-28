@@ -1,5 +1,6 @@
 package com.liceu.practica3.services;
 
+import com.liceu.practica3.models.Gender;
 import com.liceu.practica3.models.Movie;
 import com.liceu.practica3.models.Movie_cast;
 import com.liceu.practica3.models.Person;
@@ -91,10 +92,11 @@ public class MainService {
        return movieRepo.FindAllDirectors(person_name);
    }
 
-   public void InsertActorInsideMovie(Movie movie, Person person, String character_Name ){
+   public void InsertActorInsideMovie(Movie movie, Person person, Gender gender, String character_Name ){
        Movie_cast movie_cast = new Movie_cast();
        movie_cast.setMovie(movie);
        movie_cast.setPerson(person);
+       movie_cast.setGender(gender);
        movie_cast.setCharacter_name(character_Name);
        movie_castRepo.save(movie_cast);
 
@@ -106,6 +108,9 @@ public class MainService {
    public Person ObtainPerson(String person_name){
        return movie_castRepo.getPerson(person_name);
    }
+
+   public Gender ObtainGender(Long gender_id){return movie_castRepo.getGender(gender_id);}
+
    public List<String> ObtainActorInsertMovie(String person_name, String title){
        return movieRepo.FindActorInsertMovie(person_name, title);
    }

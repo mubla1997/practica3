@@ -9,21 +9,28 @@ h1{
 h2{
     color: #FFFFFF;
 }
-#text{
-    width: 300px;
-    margin-right: 10px;
-    margin-left: -100px;
-}
-#text2{
+#form #text{
     width: 300px;
     margin-right: 10px;
     margin-left: 30px;
 }
-#text3{
+#form #text2{
     width: 300px;
     margin-right: 10px;
     margin-left: 30px;
 }
+#form #text3{
+    width: 300px;
+    margin-right: 10px;
+    margin-left: 30px;
+}
+
+#form #text4{
+    width: 300px;
+    margin-right: 10px;
+    margin-left: 30px;
+}
+
 #label{
     margin-left: 30px;
 }
@@ -31,6 +38,9 @@ h2{
     margin-left: 30px;
 }
 #label3{
+    margin-left: 30px;
+}
+#label4{
     margin-left: 30px;
 }
 button{
